@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int UserHp = 100, UserMp = 100;
+        int EnemyHp = 100, EnemyMp = 100;
+        
+        while (UserHp > 0 && EnemyHp > 0) {
+
+            String[] stats = {
+                "============================================",
+                "|              Pooku Palace!               |",
+                "============================================",
+                "",
+                " () ()                            n,n",
+                "=[o-o]=                         =(-n-)=",
+                "~(___)                          c(_c_)",
+                "============================================",
+                " ",
+                "Your Stats              Enemy Stats",
+                "--------------------------------------",
+                "Health: " + UserHp + "             Health: " + EnemyHp,
+                "Mp:\t" + UserMp + "                 Mp: " + EnemyMp,
+                "--------------------------------------",
+                "Press 1 to Attack",
+                "Press 2 to Heal",
+                "Press 3 to Run",
+                " ",
+                " "
+            };
+
+            for (String line : stats) {
+                System.out.println(line);
+            }
+            
+            int pInput = input.nextInt();
+            
+            if (pInput == 1) {
+
+                System.out.println("You attack your enemy!");
+                int Damage = 20;
+                EnemyHp -= Damage;
+                System.out.println("Enemy Health: " + EnemyHp);
+                
+
+                int enemyDamage = 1;
+                UserHp -= enemyDamage;
+                System.out.println("The enemy attacks you! Your Health: " + UserHp);
+            } 
+            else if (pInput == 2) {
+
+                System.out.println("You heal yourself!");
+                int HealAmount = 20;
+                UserHp += HealAmount;
+                System.out.println("Your Health: " + UserHp);
+                
+
+                int enemyDamage = 15;
+                UserHp -= enemyDamage;
+                System.out.println("The enemy attacks you! Your Health: " + UserHp);
+            } 
+            else if (pInput == 3) {
+
+                System.out.println("You chose to run! The game is over.");
+                break;
+            } 
+            else {
+                System.out.println("Invalid input! Please Choose A valid Input!");
+            }
+
+
+            if (UserHp <= 0) {
+                System.out.println("You have been defeated! Game Over.");
+            } 
+            else if (EnemyHp <= 0) {
+                System.out.println("You defeated the enemy! You win!");
+            }
+        }
+
+        input.close();
+    }
+}
